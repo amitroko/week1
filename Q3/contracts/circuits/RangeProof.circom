@@ -11,5 +11,14 @@ template RangeProof(n) {
     component low = LessEqThan(n);
     component high = GreaterEqThan(n);
 
-    // [assignment] insert your code here
+    // pass the input and lower bound to the less than or equal to comparator component
+    low.in[0] <== in;
+    low.in[1] <== range[0];
+
+    // pass the input and upper bound to the greater than or equal to comparator component
+    high.in[0] <== in;
+    high.in[1] <== range[1];
+
+    // output signal will be 1 if both low.out and high.out are 1
+    out <== low.out * high.out;
 }
